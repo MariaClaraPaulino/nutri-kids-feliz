@@ -6,7 +6,7 @@ import { HomePage } from "../components/site-pages";
 // project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
-    { title: "Início | Pequenos Hábitos" },
+    { title: "Início | NutriKIDS" },
     { name: "description", content: "Ideias simples para cultivar hábitos alimentares saudáveis na infância." },
     { property: "og:title", content: "Pequenas escolhas, grandes hábitos" },
     { property: "og:description", content: "Ideias simples para cultivar hábitos alimentares saudáveis na infância." },

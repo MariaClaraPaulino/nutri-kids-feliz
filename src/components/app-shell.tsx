@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Moon, Sprout, Sun, X } from "lucide-react";
+import { Leaf, Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 import { Button } from "./ui/button";
 
@@ -22,7 +22,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <a href="#conteudo" className="fixed left-3 top-3 z-50 -translate-y-20 bg-primary px-4 py-2 text-primary-foreground focus:translate-y-0">Pular para o conteúdo</a>
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95 backdrop-blur-sm">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold text-forest"><span className="grid size-9 place-items-center rounded-full bg-primary text-primary-foreground"><Sprout aria-hidden="true" /></span> Pequenos Hábitos</Link>
+        <Link to="/" className="group flex items-center gap-2 font-display text-xl font-bold text-forest"><span className="grid size-10 place-items-center rounded-2xl bg-primary text-primary-foreground transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-105"><Leaf aria-hidden="true" /></span> Nutri<span className="text-leaf">KIDS</span></Link>
         <nav aria-label="Navegação principal" className="hidden items-center gap-1 lg:flex">{links.map(([to,label]) => <Link key={to} to={to} className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground [&.active]:bg-secondary [&.active]:text-secondary-foreground">{label}</Link>)}</nav>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label={dark ? "Ativar modo claro" : "Ativar modo escuro"}>{dark ? <Sun /> : <Moon />}</Button>
@@ -32,6 +32,6 @@ export function AppShell({ children }: { children: ReactNode }) {
       {menu && <nav aria-label="Menu móvel" className="border-t border-border bg-background p-3 lg:hidden">{links.map(([to,label]) => <Link key={to} to={to} className="block rounded-md px-4 py-3 font-medium hover:bg-muted [&.active]:bg-secondary">{label}</Link>)}</nav>}
     </header>
     <main id="conteudo">{children}</main>
-    <footer className="bg-forest text-primary-foreground"><div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 md:grid-cols-2 lg:px-8"><div><div className="mb-3 flex items-center gap-2 font-display text-xl font-bold"><Sprout /> Pequenos Hábitos</div><p className="max-w-md text-sm opacity-80">Informação simples para apoiar relações mais tranquilas e positivas com a alimentação na infância.</p></div><div className="space-y-1 text-sm md:text-right"><p className="font-semibold">Produzido por Clara Paulino</p><p>Disciplina de Projeto Integrador</p><p>ETE Limoeiro</p><p>Com apoio de Tarcila e Laura</p></div></div></footer>
+    <footer className="relative overflow-hidden bg-forest text-primary-foreground"><div className="absolute -right-10 -top-14 size-44 rounded-full border border-primary-foreground/15"/><div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 md:grid-cols-2 lg:px-8"><div><div className="mb-3 flex items-center gap-2 font-display text-2xl font-bold"><Leaf /> NutriKIDS</div><p className="max-w-md text-sm opacity-80">Informação simples para apoiar relações mais tranquilas e positivas com a alimentação na infância.</p></div><div className="space-y-1 text-sm md:text-right"><p className="font-semibold">Produzido por Clara Paulino</p><p>Disciplina de Projeto Integrador</p><p>ETE Limoeiro</p><p>Com apoio de Tarcila e Laura</p></div></div></footer>
   </div>;
 }

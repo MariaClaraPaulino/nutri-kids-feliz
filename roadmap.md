@@ -6,3 +6,7 @@
 - [x] Criar quiz interativo com 10 perguntas
 - [x] Adicionar imagens, animações e acessibilidade
 - [x] Validar computador e celular
+- [x] Renomear a marca para NutriKIDS em todas as páginas
+- [x] Aplicar o novo visual fluido, branco e verde
+- [x] Ampliar animações e microinterações
+- [x] Validar novamente em computador e celular
