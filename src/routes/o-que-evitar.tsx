@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { AvoidPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/o-que-evitar")({ head:()=>meta("O que evitar","Comportamentos que podem dificultar uma relação tranquila com a comida."), component:AvoidPage });

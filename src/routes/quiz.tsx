@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { QuizPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/quiz")({ head:()=>meta("Quiz","Teste seus conhecimentos sobre alimentação saudável na infância."), component:QuizPage });

@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { HealthyPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/alimentacao-saudavel")({ head:()=>meta("Alimentação saudável","Entenda como a variedade pode fazer parte da alimentação infantil."), component:HealthyPage });
