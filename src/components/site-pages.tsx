@@ -42,4 +42,47 @@ const questions=[
   ["Pressionar para comer pode...",["Garantir uma boa relação com comida","Deixar a refeição mais tensa","Ensinar a perceber a saciedade"],1,"Pressão pode dificultar a percepção dos sinais do próprio corpo."],
   ["Uma participação adequada para a criança é...",["Escolher todo o cardápio","Lavar uma fruta ou organizar a mesa","Preparar tudo sozinha"],1,"Pequenas tarefas seguras estimulam curiosidade e pertencimento."],
 ] as const;
-export function QuizPage(){const [current,setCurrent]=useState(0);const [selected,setSelected]=useState<number|null>(null);const [score,setScore]=useState(0);const [done,setDone]=useState(false);const q=questions[current] ?? questions[0];const choose=(choice:number)=>{setSelected(choice);if(choice===q[2])setScore(s=>s+1)};const next=()=>{if(current===questions.length-1)setDone(true);else{setCurrent(c=>c+1);setSelected(null)}};const reset=()=>{setCurrent(0);setSelected(null);setScore(0);setDone(false)};if(done){const title=score<=4?"Vamos aprender mais!":score<=7?"Você está no caminho!":"Muito bom!";return <section className="mx-auto max-w-3xl px-5 py-24 text-center"><span className="mx-auto grid size-20 place-items-center rounded-full bg-secondary text-primary"><Sparkles className="size-9"/></span><p className="mt-7 text-sm font-bold uppercase text-coral">Seu resultado: {score} de 10</p><h1 className="mt-2 text-4xl text-forest">{title}</h1><p className="mx-auto mt-4 max-w-lg text-muted-foreground">O quiz é uma forma de revisar ideias, não uma avaliação da sua família. Cada pequena descoberta conta.</p><Button onClick={reset} size="xl" className="mt-8"><RefreshCw/> Refazer o quiz</Button></section>};const answered=selected!==null;return <><PageHero eyebrow="Quiz" title="O que você já sabe sobre hábitos saudáveis?" text="Responda uma pergunta por vez e veja uma explicação curta após cada escolha."/><section className="mx-auto max-w-3xl px-5 py-16"><div className="mb-8 flex items-center gap-4"><Progress value={((current+1)/questions.length)*100}/><span className="whitespace-nowrap text-sm font-bold">{current+1} / 10</span></div><p className="text-sm font-bold uppercase text-coral">Pergunta {current+1}</p><h2 className="mt-3 text-3xl leading-snug text-forest">{q[0]}</h2><div className="mt-8 space-y-3">{q[1].map((option,i)=><button key={option} disabled={answered} onClick={()=>choose(i)} className={`flex w-full items-center gap-4 border p-5 text-left font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-ring ${selected===i?(i===q[2]?"border-primary bg-secondary":"border-coral bg-coral/10"):"border-border bg-card hover:border-primary"}`}><span className="grid size-8 shrink-0 place-items-center rounded-full border border-current">{selected===i?(i===q[2]?<Check/>:<X/>):String.fromCharCode(65+i)}</span>{option}</button>)}</div>{answered&&<div role="status" className="mt-6 border-l-4 border-primary bg-muted p-5"><p className="font-bold">{selected===q[2]?"Boa escolha!":"Vale rever esta ideia."}</p><p className="mt-1 text-muted-foreground">{q[3]}</p></div>}{answered&&<div className="mt-7 text-right"><Button size="lg" onClick={next}>{current===9?"Ver resultado":"Próxima pergunta"}<ArrowRight/></Button></div>}</section></>}
+export function QuizPage(){
+  const [current,setCurrent]=useState(0);
+  const [selected,setSelected]=useState<number|null>(null);
+  const [score,setScore]=useState(0);
+  const [done,setDone]=useState(false);
+  const q=questions[current] ?? questions[0];
+  const choose=(choice:number)=>{setSelected(choice);if(choice===q[2])setScore(s=>s+1)};
+  const next=()=>{if(current===questions.length-1)setDone(true);else{setCurrent(c=>c+1);setSelected(null)}};
+  const reset=()=>{setCurrent(0);setSelected(null);setScore(0);setDone(false)};
+  if(done){
+    const title=score<=4?"Vamos aprender mais!":score<=7?"Você está no caminho!":"Muito bom!";
+    return <section className="relative overflow-hidden bg-secondary/35 px-5 py-20 md:py-28">
+      <div className="absolute -left-20 top-14 size-52 rounded-full border-[30px] border-primary/10 animate-drift"/>
+      <div className="relative mx-auto max-w-2xl rounded-[2.5rem] border border-border bg-card p-8 text-center shadow-[0_24px_70px_oklch(0.25_0.06_150_/_0.12)] md:p-14">
+        <span className="mx-auto grid size-20 place-items-center rounded-3xl bg-secondary text-primary animate-soft-pulse"><Sparkles className="size-9"/></span>
+        <p className="mt-7 text-sm font-bold uppercase text-primary">Seu resultado: {score} de 10</p>
+        <h1 className="mt-2 text-4xl text-forest md:text-5xl">{title}</h1>
+        <p className="mx-auto mt-4 max-w-lg text-muted-foreground">O quiz é uma forma de revisar ideias, não uma avaliação da sua família. Cada pequena descoberta conta.</p>
+        <Button onClick={reset} size="xl" className="mt-8 rounded-2xl"><RefreshCw/> Refazer o quiz</Button>
+      </div>
+    </section>
+  }
+  const answered=selected!==null;
+  return <section className="relative overflow-hidden bg-secondary/35 px-4 py-12 md:px-6 md:py-20">
+    <div className="absolute -right-24 top-10 size-64 rounded-full border-[38px] border-primary/8 animate-drift"/>
+    <div className="absolute -left-10 bottom-28 size-24 rounded-[65%_35%_65%_35%] bg-primary/8 animate-float-soft"/>
+    <div className="relative mx-auto max-w-3xl overflow-hidden rounded-[2.5rem] border border-border bg-card shadow-[0_24px_70px_oklch(0.25_0.06_150_/_0.12)]">
+      <div className="p-6 pb-3 md:p-9 md:pb-4">
+        <div className="mb-6 flex items-center justify-between gap-4">
+          <span className="font-display text-2xl font-bold text-forest">Nutri<span className="text-leaf">KIDS</span></span>
+          <span className="rounded-full bg-secondary px-4 py-2 text-xs font-bold text-primary">Pergunta {current+1} de 10</span>
+        </div>
+        <Progress value={((current+1)/questions.length)*100} className="h-3"/>
+      </div>
+      <div className="px-6 py-7 text-center md:px-10">
+        <p className="mb-2 text-xs font-bold uppercase text-primary">Escolha uma resposta</p>
+        <h1 className="mx-auto max-w-2xl text-2xl leading-snug text-forest md:text-3xl">{q[0]}</h1>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">{q[1].map((option,i)=><button key={option} disabled={answered} onClick={()=>choose(i)} className={`group relative flex min-h-24 items-center gap-4 rounded-2xl border-2 p-4 text-left font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ring disabled:cursor-default ${selected===i?(i===q[2]?"border-primary bg-secondary text-forest":"border-primary/40 bg-muted text-foreground"):"border-border bg-background hover:-translate-y-1 hover:border-primary hover:bg-secondary/45 hover:shadow-lg"}`}><span className="grid size-12 shrink-0 place-items-center rounded-xl bg-secondary text-lg text-primary transition-transform duration-300 group-hover:scale-110">{selected===i?(i===q[2]?<Check/>:<X/>):String.fromCharCode(65+i)}</span>{option}</button>)}</div>
+      </div>
+      {answered&&<div role="status" className="mx-6 flex gap-4 rounded-2xl border border-primary/20 bg-secondary/55 p-5 animate-reveal md:mx-10"><Sparkles className="shrink-0 text-primary"/><div><p className="font-bold text-forest">{selected===q[2]?"Boa escolha!":"Vale rever esta ideia."}</p><p className="mt-1 text-sm text-muted-foreground">{q[3]}</p></div></div>}
+      <div className="flex justify-end p-6 md:p-9">{answered&&<Button size="xl" className="rounded-2xl transition-transform hover:-translate-y-1" onClick={next}>{current===9?"Ver resultado":"Próxima pergunta"}<ArrowRight/></Button>}</div>
+    </div>
+  </section>
+}
