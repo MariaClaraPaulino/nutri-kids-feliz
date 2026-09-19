@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { TipsPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/dicas")({ head:()=>meta("Dicas para o dia a dia","Sugestões práticas para cultivar bons hábitos alimentares com crianças."), component:TipsPage });

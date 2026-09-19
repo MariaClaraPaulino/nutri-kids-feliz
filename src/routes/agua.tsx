@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { WaterPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/agua")({ head:()=>meta("Água e hidratação","Ideias simples para manter a água disponível na rotina das crianças."), component:WaterPage });

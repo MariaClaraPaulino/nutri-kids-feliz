@@ -1,0 +1,2 @@
+import { createFileRoute } from "@tanstack/react-router"; import { DoPage, meta } from "../components/site-pages";
+export const Route=createFileRoute("/o-que-fazer")({ head:()=>meta("O que fazer","Atitudes práticas para apoiar hábitos alimentares saudáveis em família."), component:DoPage });

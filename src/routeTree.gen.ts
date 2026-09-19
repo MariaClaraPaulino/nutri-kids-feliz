@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AguaRouteImport } from './routes/agua'
+import { Route as AlimentacaoSaudavelRouteImport } from './routes/alimentacao-saudavel'
+import { Route as DicasRouteImport } from './routes/dicas'
+import { Route as OQueEvitarRouteImport } from './routes/o-que-evitar'
+import { Route as OQueFazerRouteImport } from './routes/o-que-fazer'
+import { Route as QuizRouteImport } from './routes/quiz'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AguaRoute = AguaRouteImport.update({
+  id: '/agua',
+  path: '/agua',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AlimentacaoSaudavelRoute = AlimentacaoSaudavelRouteImport.update({
+  id: '/alimentacao-saudavel',
+  path: '/alimentacao-saudavel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DicasRoute = DicasRouteImport.update({
+  id: '/dicas',
+  path: '/dicas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OQueEvitarRoute = OQueEvitarRouteImport.update({
+  id: '/o-que-evitar',
+  path: '/o-que-evitar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OQueFazerRoute = OQueFazerRouteImport.update({
+  id: '/o-que-fazer',
+  path: '/o-que-fazer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/alimentacao-saudavel': typeof AlimentacaoSaudavelRoute
+  '/dicas': typeof DicasRoute
+  '/o-que-evitar': typeof OQueEvitarRoute
+  '/o-que-fazer': typeof OQueFazerRoute
+  '/quiz': typeof QuizRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/alimentacao-saudavel': typeof AlimentacaoSaudavelRoute
+  '/dicas': typeof DicasRoute
+  '/o-que-evitar': typeof OQueEvitarRoute
+  '/o-que-fazer': typeof OQueFazerRoute
+  '/quiz': typeof QuizRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agua': typeof AguaRoute
+  '/alimentacao-saudavel': typeof AlimentacaoSaudavelRoute
+  '/dicas': typeof DicasRoute
+  '/o-que-evitar': typeof OQueEvitarRoute
+  '/o-que-fazer': typeof OQueFazerRoute
+  '/quiz': typeof QuizRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agua'
+    | '/alimentacao-saudavel'
+    | '/dicas'
+    | '/o-que-evitar'
+    | '/o-que-fazer'
+    | '/quiz'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agua'
+    | '/alimentacao-saudavel'
+    | '/dicas'
+    | '/o-que-evitar'
+    | '/o-que-fazer'
+    | '/quiz'
+  id:
+    | '__root__'
+    | '/'
+    | '/agua'
+    | '/alimentacao-saudavel'
+    | '/dicas'
+    | '/o-que-evitar'
+    | '/o-que-fazer'
+    | '/quiz'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AguaRoute: typeof AguaRoute
+  AlimentacaoSaudavelRoute: typeof AlimentacaoSaudavelRoute
+  DicasRoute: typeof DicasRoute
+  OQueEvitarRoute: typeof OQueEvitarRoute
+  OQueFazerRoute: typeof OQueFazerRoute
+  QuizRoute: typeof QuizRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agua': {
+      id: '/agua'
+      path: '/agua'
+      fullPath: '/agua'
+      preLoaderRoute: typeof AguaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/alimentacao-saudavel': {
+      id: '/alimentacao-saudavel'
+      path: '/alimentacao-saudavel'
+      fullPath: '/alimentacao-saudavel'
+      preLoaderRoute: typeof AlimentacaoSaudavelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dicas': {
+      id: '/dicas'
+      path: '/dicas'
+      fullPath: '/dicas'
+      preLoaderRoute: typeof DicasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-que-evitar': {
+      id: '/o-que-evitar'
+      path: '/o-que-evitar'
+      fullPath: '/o-que-evitar'
+      preLoaderRoute: typeof OQueEvitarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/o-que-fazer': {
+      id: '/o-que-fazer'
+      path: '/o-que-fazer'
+      fullPath: '/o-que-fazer'
+      preLoaderRoute: typeof OQueFazerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AguaRoute: AguaRoute,
+  AlimentacaoSaudavelRoute: AlimentacaoSaudavelRoute,
+  DicasRoute: DicasRoute,
+  OQueEvitarRoute: OQueEvitarRoute,
+  OQueFazerRoute: OQueFazerRoute,
+  QuizRoute: QuizRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
