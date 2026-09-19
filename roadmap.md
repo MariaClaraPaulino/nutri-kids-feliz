@@ -10,3 +10,5 @@
 - [x] Aplicar o novo visual fluido, branco e verde
 - [x] Ampliar animações e microinterações
 - [x] Validar novamente em computador e celular
+- [x] Melhorar a distribuição visual das informações na página inicial
+- [x] Adicionar atalhos sequenciais no final das páginas
